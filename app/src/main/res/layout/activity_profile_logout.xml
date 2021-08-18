@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="176dp"
+        android:layout_height="153dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
+    <TextView
+        android:id="@+id/txtName"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgProfile"
+        android:text="Name"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"></TextView>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtFieldLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtName"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/secondary"
+        android:textStyle="bold"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/imgProfile"/>
+    <TextView
+        android:id="@+id/txtUsername"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgProfile"
+        android:text="Username"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="70dp"></TextView>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtFieldUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtUsername"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/secondary"
+        android:textStyle="bold"
+        android:layout_marginRight="70dp" />
+    <TextView
+        android:id="@+id/txtDathOfBirth"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFieldUsername"
+        android:text="Date of birth"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="70dp"></TextView>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtFieldDateOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDathOfBirth"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/secondary"
+        android:textStyle="bold"
+        android:layout_marginRight="70dp" />
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:textSize="18dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFieldDateOfBirth"
+        android:layout_centerHorizontal="true"
+        android:background="@color/primary"
+        android:textColor="@color/white"
+        android:text="Change Password"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"></Button>
+    <Button
+        android:id="@+id/btnLogout"
+        android:textSize="18dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnChangePassword"
+        android:layout_centerHorizontal="true"
+        android:background="@color/primary"
+        android:textColor="@color/white"
+        android:text="Log out"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"></Button>
+</RelativeLayout>
