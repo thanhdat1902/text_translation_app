@@ -12,20 +12,20 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class GetImageTabsActivity extends AppCompatActivity {
+public class TranslationTabsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
 
 
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.main_tab_content);
 
+
+
         prepareTabsLayout(tabLayout);
 
-
-        final ImageTabsPagerAdapter adapter = new ImageTabsPagerAdapter
+        final TranslationPagerAdapter adapter = new TranslationPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
@@ -53,7 +53,7 @@ public class GetImageTabsActivity extends AppCompatActivity {
     }
 
     private void prepareTabsLayout(TabLayout tabLayout) {
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.camera_icon2));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_world));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.profile_icon));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         LinearLayout linearLayout = (LinearLayout)tabLayout.getChildAt(0);
