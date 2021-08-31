@@ -68,7 +68,7 @@
         android:text="Login"
         android:layout_below="@+id/txtFieldPassword"
         android:textColor="@color/white"
-        android:background="@color/primary"
+        android:background="@drawable/button_color"
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"
         android:textStyle="bold"></Button>

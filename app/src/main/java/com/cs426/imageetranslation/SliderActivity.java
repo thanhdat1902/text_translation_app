@@ -2,9 +2,13 @@ package com.cs426.imageetranslation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class SliderActivity extends AppCompatActivity implements View.OnClickListener{
     // creating object of ViewPager
     ViewPager mViewPager;
 
@@ -13,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Creating Object of ViewPagerAdapter
     ViewPagerAdapter mViewPagerAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +27,22 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
 
         // Initializing the ViewPagerAdapter
-        mViewPagerAdapter = new ViewPagerAdapter(MainActivity.this, images);
+        mViewPagerAdapter = new ViewPagerAdapter(SliderActivity.this, images);
 
         // Adding the Adapter to the ViewPager
         mViewPager.setAdapter(mViewPagerAdapter);
+
+        com.google.android.material.floatingactionbutton.FloatingActionButton btnNext = findViewById(R.id.btnNextScreen);
+        btnNext.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnNextScreen: {
+                startActivity(new Intent(this, GetImageTabsActivity.class));
+                break;
+            }
+        }
     }
 }
