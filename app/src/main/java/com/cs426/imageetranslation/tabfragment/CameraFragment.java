@@ -26,6 +26,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,16 +38,31 @@ import androidx.fragment.app.Fragment;
 
 import com.cs426.imageetranslation.R;
 import com.cs426.imageetranslation.TranslationTabsActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.text.FirebaseVisionCloudTextRecognizerOptions;
+import com.google.firebase.ml.vision.text.FirebaseVisionText;
+import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class CameraFragment extends Fragment implements View.OnClickListener {
     ImageView selectedImage;
     Button btnCamera,btnGallery,btnChooseLanguage;
+    Bitmap imageBitmap;
+    TextView detectedText;
+
+    private String fullText = "";
+
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -58,6 +74,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment.
         View rootView = inflater.inflate(R.layout.acitvity_get_image, container, false);
+        FirebaseApp.initializeApp(getActivity());
 
         return rootView;
 
@@ -72,9 +89,12 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         btnCamera = (Button) getView().findViewById(R.id.btnCamera);
         btnGallery = (Button) getView().findViewById(R.id.btnGallery);
         btnChooseLanguage = (Button) getView().findViewById(R.id.btnChooseLanguage);
+        detectedText = (TextView) getView().findViewById(R.id.detectedText);
+
         btnCamera.setOnClickListener(this);
         btnGallery.setOnClickListener(this);
         btnChooseLanguage.setOnClickListener(this);
+
 
 
     }
@@ -164,28 +184,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         }
 
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable  Intent data) {
-        if(requestCode == CAMERA_REQUEST_CODE){
-            if(resultCode == Activity.RESULT_OK){
-                File f = new File(currentPhotoPath);
-                selectedImage.setImageURI(Uri.fromFile(f));
-
-                galleryAddPic();
-            }
-        }
-
-        else if(requestCode == GALLERY_REQUEST_CODE){
-            if(resultCode == Activity.RESULT_OK){
-                Uri contentUri = data.getData();
-                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
-                selectedImage.setImageURI(contentUri);
-            }
-        }
-    }
-
     private String getFileExt(Uri contentUri) {
         ContentResolver c = getActivity().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
@@ -200,62 +198,85 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         mediaScanIntent.setData(contentUri);
         getActivity().sendBroadcast(mediaScanIntent);
     }
+    // Get image from camera
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable  Intent data) {
 
-//    Another method to set the image
-   /* private void setPic() throws IOException {
-        // Get the dimensions of the View
-        int targetW = selectedImage.getWidth();
-        int targetH = selectedImage.getHeight();
+        if(requestCode == CAMERA_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK) {
+                File f = new File(currentPhotoPath);
+                selectedImage.setImageURI(Uri.fromFile(f));
+                galleryAddPic();
+                    try {
+                        detectTextFromImage(Uri.fromFile(f));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-        // Get the dimensions of the bitmap
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
+            }
+        }
 
-        BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
+        else if(requestCode == GALLERY_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                Uri contentUri = data.getData();
+//                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//                String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
+                selectedImage.setImageURI(contentUri);
+                try {
+                    detectTextFromImage(contentUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
-
-        // Determine how much to scale down the image
-        int scaleFactor = Math.max(1, Math.min(photoW/targetW, photoH/targetH));
-
-        // Decode the image file into a Bitmap sized to fill the View
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-
-        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
-        selectedImage.setImageBitmap(rotateImageIfRequired(getContext(),bitmap,photoURI));
     }
 
-    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) throws IOException {
 
-        InputStream input = context.getContentResolver().openInputStream(selectedImage);
-        ExifInterface ei;
-        if (Build.VERSION.SDK_INT > 23)
-            ei = new ExifInterface(input);
-        else
-            ei = new ExifInterface(selectedImage.getPath());
 
-        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
 
-        switch (orientation) {
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                return rotateImage(img, 90);
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                return rotateImage(img, 180);
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                return rotateImage(img, 270);
-            default:
-                return img;
+    // Detect text from image
+    private void detectTextFromImage(Uri imageURI) throws IOException {
+        FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFilePath(getActivity(), imageURI);
+//        FirebaseVisionCloudTextRecognizerOptions options = new FirebaseVisionCloudTextRecognizerOptions.Builder()
+//                .setLanguageHints(Arrays.asList("en", "hi"))
+//                .build();
+        FirebaseVisionTextRecognizer detector = FirebaseVision.getInstance().getOnDeviceTextRecognizer();
+        detector.processImage(firebaseVisionImage).addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
+            @Override
+            public void onSuccess(FirebaseVisionText firebaseVisionText) {
+                Log.d("abc", String.valueOf(firebaseVisionText));
+                displayTextFromImage(firebaseVisionText);
+            }
+        }) .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("Error: ", e.getMessage());
+            }
+        });
+
+    }
+    // Show text to activity
+    private void displayTextFromImage(FirebaseVisionText firebaseVisionText) {
+        List<FirebaseVisionText.TextBlock> blockList = firebaseVisionText.getTextBlocks();
+        if(blockList.size() == 0) {
+            Toast.makeText(getContext(), "No Text Found In Image.", Toast.LENGTH_SHORT).show();
+        }else {
+            detectedText.setText("");
+            for(FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
+                String text = block.getText();
+                fullText += text;
+                fullText += "\n";
+                detectedText.append(text);
+                detectedText.append("\n");
+            }
         }
     }
-    public static Bitmap rotateImage(Bitmap source, float angle) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
-                matrix, true);
-    }*/
+
+
+
+
 
 }
 

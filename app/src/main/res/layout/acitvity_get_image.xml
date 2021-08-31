@@ -55,6 +55,7 @@
             android:background="@drawable/border_shadow"
             android:scrollbars="vertical">
             <TextView
+                android:id="@+id/detectedText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tomorrow, and tomorrow, and tomorrow; creeps in this pretty pace from day to day until the last syllable of recorded time. And all our yesterdays have lighted fools the ways to dusty"
