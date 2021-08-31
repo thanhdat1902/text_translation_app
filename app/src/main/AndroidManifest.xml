@@ -13,21 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageeTranslation">
-        <activity android:name=".SliderActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SliderActivity">
+
+        </activity>
         <activity android:name=".GetImageTabsActivity">
 
         </activity>
+
+        <activity android:name=".ChangePwdActivity">
+
+    </activity>
 
 
     <activity android:name=".TranslationTabsActivity">
 
     </activity>
+
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

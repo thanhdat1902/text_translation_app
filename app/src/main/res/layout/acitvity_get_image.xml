@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="300dp"
             android:layout_weight="4"
-            android:src="@drawable/tomcat"
+            android:src="@drawable/test_text1"
             android:layout_marginHorizontal="16dp"
             android:layout_gravity="center"
             android:elevation="10dp"/>
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello my name is Zuzie "
+                android:text="Tomorrow, and tomorrow, and tomorrow; creeps in this pretty pace from day to day until the last syllable of recorded time. And all our yesterdays have lighted fools the ways to dusty"
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:textColor="@color/black"

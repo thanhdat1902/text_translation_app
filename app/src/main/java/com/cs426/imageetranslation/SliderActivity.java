@@ -32,7 +32,7 @@ public class SliderActivity extends AppCompatActivity implements View.OnClickLis
         // Adding the Adapter to the ViewPager
         mViewPager.setAdapter(mViewPagerAdapter);
 
-        Button btnNext = findViewById(R.id.btnNextScreen);
+        com.google.android.material.floatingactionbutton.FloatingActionButton btnNext = findViewById(R.id.btnNextScreen);
         btnNext.setOnClickListener(this);
     }
 

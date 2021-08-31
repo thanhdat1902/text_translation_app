@@ -7,24 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class ChangePwdActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_changepassword);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(this);
+        Button btnPwd = findViewById(R.id.btnConfirmChange);
+        btnPwd.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnLogin: {
-                startActivity(new Intent(this, SliderActivity.class));
+            case R.id.btnConfirmChange:{
+                startActivity(new Intent(this, GetImageTabsActivity.class));
                 break;
             }
+
         }
     }
 }
