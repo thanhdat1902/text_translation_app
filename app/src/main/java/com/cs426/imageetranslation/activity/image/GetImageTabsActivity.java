@@ -1,6 +1,5 @@
-package com.cs426.imageetranslation;
+package com.cs426.imageetranslation.activity.image;
 
-import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
@@ -10,6 +9,8 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.cs426.imageetranslation.adapter.ImageTabsPagerAdapter;
+import com.cs426.imageetranslation.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class GetImageTabsActivity extends AppCompatActivity {

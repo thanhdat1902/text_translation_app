@@ -16,26 +16,26 @@
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SliderActivity">
+        <activity android:name=".activity.slider.SliderActivity">
 
         </activity>
-        <activity android:name=".GetImageTabsActivity">
+        <activity android:name=".activity.image.GetImageTabsActivity">
 
         </activity>
 
-        <activity android:name=".ChangePwdActivity">
+        <activity android:name=".activity.changePassword.ChangePwdActivity">
 
     </activity>
 
 
-    <activity android:name=".TranslationTabsActivity">
+    <activity android:name=".activity.translation.TranslationTabsActivity">
 
     </activity>
 

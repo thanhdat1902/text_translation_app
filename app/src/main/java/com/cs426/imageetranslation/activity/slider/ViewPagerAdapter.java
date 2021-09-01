@@ -1,4 +1,4 @@
-package com.cs426.imageetranslation;
+package com.cs426.imageetranslation.activity.slider;
 
 
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.cs426.imageetranslation.R;
+
 import java.util.Objects;
 
 class ViewPagerAdapter extends PagerAdapter {
