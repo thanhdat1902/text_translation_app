@@ -6,10 +6,10 @@
     <item>
         <shape>
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1.25dp"
+                android:left="0.5dp"
+                android:right="1.25dp"
+                android:top="0.5dp" />
 
             <solid android:color="#00CCCCCC" />
 
@@ -19,10 +19,10 @@
     <item>
         <shape>
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1.25dp"
+                android:left="0.5dp"
+                android:right="1.25dp"
+                android:top="0.5dp" />
 
             <solid android:color="#10CCCCCC" />
 
@@ -32,10 +32,11 @@
     <item>
         <shape>
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1.25dp"
+                android:left="0.5dp"
+                android:right="1.25dp"
+                android:top="0.5dp" />
+
 
             <solid android:color="#20CCCCCC" />
 
@@ -45,10 +46,11 @@
     <item>
         <shape>
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1.25dp"
+                android:left="0.5dp"
+                android:right="1.25dp"
+                android:top="0.5dp" />
+
 
             <solid android:color="#30CCCCCC" />
 
@@ -58,10 +60,10 @@
     <item>
         <shape>
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1.25dp"
+                android:left="0.5dp"
+                android:right="1.25dp"
+                android:top="0.5dp" />
 
             <solid android:color="#50CCCCCC" />
 
