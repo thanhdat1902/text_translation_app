@@ -2,21 +2,18 @@ package com.cs426.imageetranslation.tabfragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.cs426.imageetranslation.ChangePwdActivity;
-import com.cs426.imageetranslation.LoginActivity;
+import com.cs426.imageetranslation.activity.changePassword.ChangePwdActivity;
+import com.cs426.imageetranslation.activity.login.LoginActivity;
 import com.cs426.imageetranslation.R;
-import com.cs426.imageetranslation.TranslationTabsActivity;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     public ProfileFragment(){

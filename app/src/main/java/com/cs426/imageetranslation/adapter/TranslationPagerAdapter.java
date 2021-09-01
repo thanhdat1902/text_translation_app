@@ -1,4 +1,4 @@
-package com.cs426.imageetranslation;
+package com.cs426.imageetranslation.adapter;
 
 
 import androidx.fragment.app.Fragment;

@@ -3,18 +3,10 @@ package com.cs426.imageetranslation.tabfragment;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,33 +17,29 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import com.cs426.imageetranslation.R;
-import com.cs426.imageetranslation.TranslationTabsActivity;
+import com.cs426.imageetranslation.activity.translation.TranslationTabsActivity;
+import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
-import com.google.firebase.ml.vision.text.FirebaseVisionCloudTextRecognizerOptions;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -231,10 +219,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         }
 
     }
-
-
-
-
     // Detect text from image
     private void detectTextFromImage(Uri imageURI) throws IOException {
         FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFilePath(getActivity(), imageURI);
@@ -264,13 +248,14 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getContext(), "No Text Found In Image.", Toast.LENGTH_SHORT).show();
         }else {
             detectedText.setText("");
-            for(FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
+            for (FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
                 String text = block.getText();
                 fullText += text;
                 fullText += "\n";
                 detectedText.append(text);
                 detectedText.append("\n");
             }
+            GlobalState.fullText = fullText;
         }
     }
 
