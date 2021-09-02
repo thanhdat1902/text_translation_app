@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.cs426.imageetranslation.R;
 import com.cs426.imageetranslation.activity.slider.SliderActivity;
@@ -16,7 +17,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        HandleClickLogin();
+    }
 
+    private void HandleClickLogin() {
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
     }
@@ -25,7 +29,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnLogin: {
-                startActivity(new Intent(this, SliderActivity.class));
+                String phone = ((EditText) findViewById(R.id.txtFieldLogin)).getText().toString();
+                String password = ((EditText) findViewById(R.id.txtFieldPassword)).getText().toString();
+                User user = new User(phone, password);
+                new LoginTask(this).execute(user);
                 break;
             }
         }
