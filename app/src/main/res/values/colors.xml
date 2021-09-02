@@ -13,4 +13,6 @@
     <color name="background">#F5F5F7</color>
     <color name="third">#FF9503</color>
     <color name="third_light">#FCA933</color>
+    <color name="unselected_tab">#BDBDBD</color>
+    <color name="light_black">#2A2A2A</color>
 </resources>

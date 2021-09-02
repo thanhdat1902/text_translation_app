@@ -6,7 +6,7 @@
     android:viewportWidth="277.58"
     android:viewportHeight="277.58">
     <path
-        android:fillColor="@color/white"
+        android:fillColor="@color/unselected_tab"
         android:pathData="M138.46,164.287c-38.628,0 -69.925,-37.519 -69.925,-83.767C68.535,
                         34.277 99.832,0 138.46,0c38.634,0 69.957,34.277 69.957,80.52C208.417,
                         126.768 177.093,164.287 138.46,164.287zM29.689,277.528c0,0 -14.832,
