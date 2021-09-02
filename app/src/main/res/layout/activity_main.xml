@@ -6,26 +6,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
+
     <LinearLayout
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="275dp"
         android:id="@+id/subLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/box">
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginRight="45dp"
+        android:background="@drawable/box"
+        android:orientation="vertical">
 
         <TextView
-            android:paddingTop="30dp"
-            android:layout_marginLeft="50dp"
             android:id="@+id/txtLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:paddingTop="30dp"
             android:text="USERNAME"
             android:textColor="@color/primary"
             android:textSize="10dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -34,20 +35,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtLogin"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
             android:layout_marginRight="50dp"
-            android:textStyle="bold"/>
+            android:textColor="@color/secondary"
+            android:textStyle="bold" />
+
         <TextView
-            android:paddingTop="5dp"
-            android:layout_marginLeft="50dp"
             android:id="@+id/txtPassword"
-            android:layout_below="@+id/txtFieldLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtFieldLogin"
+            android:layout_marginLeft="50dp"
+            android:paddingTop="5dp"
             android:text="PASSWORD"
             android:textColor="@color/primary"
-            android:textStyle="bold"
-            android:textSize="10dp" />
+            android:textSize="10dp"
+            android:textStyle="bold" />
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -57,17 +59,16 @@
             android:layout_below="@+id/txtPassword"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="3dp"
-            android:textColor="@color/secondary"
             android:layout_marginRight="50dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="50dp"
+            android:textColor="@color/secondary"
+            android:textStyle="bold" />
     </LinearLayout>
-
 
     <Button
         android:layout_marginTop="-25dp"
         android:textSize="15dp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnLogin"
         android:text="LOGIN"
