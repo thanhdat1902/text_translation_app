@@ -18,11 +18,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_margin="12dp"
-            android:text="CHOOSE LANGUAGE"
+            android:text="Languages"
             android:textColor="@color/light_black"
             android:fontFamily="@font/lato_black"
             android:textSize="26sp"
             android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/searchLanguages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_loupe"
+            android:background="@drawable/border_shadow_3"
+            android:textColorHint="@color/unselected_tab"
+            android:padding="8dp"
+            android:inputType="textVisiblePassword"
+            android:layout_margin="8dp"
+            android:drawablePadding="8dp"
+            android:hint="Search">
+        </EditText>
 
         <ScrollView
             android:layout_width="match_parent"

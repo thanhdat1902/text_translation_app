@@ -107,8 +107,8 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
         // Create an English-German translator:
         FirebaseTranslatorOptions options =
                 new FirebaseTranslatorOptions.Builder()
-                        .setSourceLanguage(FirebaseTranslateLanguage.EN)
-                        .setTargetLanguage(FirebaseTranslateLanguage.VI)
+                        .setSourceLanguage(GlobalState.selectedFrom)
+                        .setTargetLanguage(GlobalState.selectedTo)
                         .build();
         final FirebaseTranslator englishVietnamTranslator =
                 FirebaseNaturalLanguage.getInstance().getTranslator(options);

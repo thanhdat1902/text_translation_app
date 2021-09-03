@@ -11,7 +11,7 @@ public class GlobalState {
             "ko","lt","lv","mk","mr","ms","mt","nl","no","pl","pt","ro","ru","sk","sl","sq","sv","sw",
             "ta","te","th","tl","tr","uk","ur","vi","zh"};
 
-    public static String[] countryName = new String[]{"Afrikaans","Afrikaans","Belarusian","Bulgarian","Bengali",
+    public static String[] countryName = new String[]{"Afrikaans","Arabic","Belarusian","Bulgarian","Bengali",
             "Catalan","Czech","Welsh","Danish","German","Greek","English","Esperanto","Spanish","Estonian",
             "Persian","Finnish","French","Irish","Galician","Gujarati","Hebrew","Hindi","Croatian","Haitian",
             "Hungarian","Indonesian","Icelandic","Italian","Japanese","Georgian","Kannada", "Korean",

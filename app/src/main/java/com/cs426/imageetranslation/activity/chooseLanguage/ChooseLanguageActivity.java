@@ -3,6 +3,8 @@ package com.cs426.imageetranslation.activity.chooseLanguage;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +21,7 @@ import com.cs426.imageetranslation.helper.GlobalState;
 
 public class ChooseLanguageActivity extends AppCompatActivity implements View.OnClickListener  {
     LinearLayout listBtn;
+    EditText search;
     int type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,40 @@ public class ChooseLanguageActivity extends AppCompatActivity implements View.On
         Intent intent = getIntent();
         type = intent.getIntExtra("type",-1);
         listBtn = (LinearLayout) findViewById(R.id.listLanguage);
+        search = (EditText) findViewById(R.id.searchLanguages);
         createListLanguage();
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                for(int index = 0; index < GlobalState.countryCode.length;index++){
+                    Button tmp = findViewById(index);
+                    if(!tmp.getText().toString().toLowerCase().contains(charSequence.toString().toLowerCase())){
+                        tmp.setVisibility(View.GONE);
+                    }
+                    else{
+                        tmp.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+//        String t = "BE";
+//        for(int i = 0; i < GlobalState.countryCode.length;i++){
+//            Button tmp = findViewById(i);
+//            if(!tmp.getText().toString().contains(t.toLowerCase())){
+//                tmp.setVisibility(View.GONE);
+//            }
+//        }
     }
 
     private void createListLanguage() {
