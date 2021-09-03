@@ -38,9 +38,6 @@
     <activity android:name=".activity.translation.TranslationTabsActivity">
 
     </activity>
-    <activity android:name=".activity.chooseLanguage.ChooseLanguageActivity">
-
-    </activity>
 
 
         <provider
