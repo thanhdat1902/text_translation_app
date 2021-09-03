@@ -86,9 +86,6 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                     if(result==TextToSpeech.LANG_MISSING_DATA || result==TextToSpeech.LANG_NOT_SUPPORTED){
                         Log.e("error", "This Language is not supported");
                     }
-                    else{
-                        ConvertTextToSpeech();
-                    }
                 }
                 else
                     Log.e("error", "Initilization Failed!");
@@ -177,6 +174,7 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                                                         ProgressBar pBar = (ProgressBar) getView().findViewById(R.id.progressbar);
                                                         pBar.setVisibility(ProgressBar.GONE);
                                                         btnTextToSpeech.setVisibility(View.VISIBLE);
+                                                        ConvertTextToSpeech();
                                                     }
                                                 })
                                         .addOnFailureListener(
