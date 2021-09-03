@@ -44,6 +44,7 @@
 
 
         <Button
+            android:id="@+id/btnTranslateFrom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -62,7 +63,7 @@
             tools:ignore="RtlCompat"/>
 
             <ImageButton
-                android:id="@+id/btnNextScreen"
+                android:id="@+id/btnExchange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_round_2"
@@ -75,6 +76,7 @@
                 />
 
         <Button
+            android:id="@+id/btnTranslateTo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -14,8 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cs426.imageetranslation.activity.chooseLanguage.ChooseLanguageActivity;
 import com.cs426.imageetranslation.activity.image.GetImageTabsActivity;
 import com.cs426.imageetranslation.R;
+import com.cs426.imageetranslation.activity.login.LoginActivity;
 import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,7 +31,8 @@ import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOption
 import org.w3c.dom.Text;
 
 public class TranslationFragment extends Fragment implements View.OnClickListener {
-    Button btnTakeNewImage,btnTranslateText;
+    Button btnTakeNewImage,btnTranslateText,btnTranslateFrom,btnTranslateTo;
+    ImageButton btnExchange;
     TextView translateV;
     private String fullText;
 
@@ -48,12 +52,20 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
         super.onViewCreated(view, savedInstanceState);
         btnTakeNewImage = (Button) getView().findViewById(R.id.btnTakeNewPhoto);
         btnTranslateText = (Button) getView().findViewById(R.id.btnTranslate);
+        btnTranslateFrom = (Button) getView().findViewById(R.id.btnTranslateFrom);
+        btnTranslateTo = (Button) getView().findViewById(R.id.btnTranslateTo);
+        btnExchange = (ImageButton) getView().findViewById(R.id.btnExchange);
         translateV = (TextView) getView().findViewById(R.id.textTranslated);
+
+        btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+        btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
 
         fullText = GlobalState.fullText;
         btnTakeNewImage.setOnClickListener(this);
         btnTranslateText.setOnClickListener(this);
-
+        btnTranslateFrom.setOnClickListener(this);
+        btnTranslateTo.setOnClickListener(this);
+        btnExchange.setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +80,25 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                 pBar.setVisibility(ProgressBar.VISIBLE);
                 translateTextFromImage();
                 break;
+            }
+            case R.id.btnTranslateFrom:{
+                Intent language = new Intent(getActivity(), ChooseLanguageActivity.class);
+                language.putExtra("type",0);
+                startActivity(language);
+                break;
+            }
+            case R.id.btnTranslateTo:{
+                Intent language = new Intent(getActivity(), ChooseLanguageActivity.class);
+                language.putExtra("type",1);
+                startActivity(language);
+                break;
+            }
+            case R.id.btnExchange:{
+                int tmp = GlobalState.selectedFrom;
+                GlobalState.selectedFrom = GlobalState.selectedTo;
+                GlobalState.selectedTo = tmp;
+                btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+                btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
             }
         }
     }
