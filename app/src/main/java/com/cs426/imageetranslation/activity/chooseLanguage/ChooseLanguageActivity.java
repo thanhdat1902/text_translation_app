@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.cs426.imageetranslation.activity.translation.TranslationTabsActivity;
 import com.cs426.imageetranslation.helper.GlobalState;
 
 public class ChooseLanguageActivity extends AppCompatActivity implements View.OnClickListener  {
+    ImageButton btnClose;
     LinearLayout listBtn;
     EditText search;
     int type;
@@ -30,6 +32,8 @@ public class ChooseLanguageActivity extends AppCompatActivity implements View.On
         Intent intent = getIntent();
         type = intent.getIntExtra("type",-1);
         listBtn = (LinearLayout) findViewById(R.id.listLanguage);
+        btnClose = (ImageButton) findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(this);
         search = (EditText) findViewById(R.id.searchLanguages);
         createListLanguage();
 
@@ -109,6 +113,9 @@ public class ChooseLanguageActivity extends AppCompatActivity implements View.On
         }
         else if(type == 1){
             GlobalState.selectedTo= v.getId();
+            startActivity(new Intent(this, TranslationTabsActivity.class));
+        }
+        else if(v.getId() == R.id.btnClose){
             startActivity(new Intent(this, TranslationTabsActivity.class));
         }
     }

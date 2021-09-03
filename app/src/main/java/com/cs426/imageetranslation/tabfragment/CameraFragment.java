@@ -48,6 +48,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
     Button btnCamera,btnGallery,btnChooseLanguage;
     Bitmap imageBitmap;
     TextView detectedText;
+    public int check = 0;
 
     private String fullText = "";
 
@@ -100,8 +101,13 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.btnChooseLanguage:{
-                startActivity(new Intent(getActivity(), TranslationTabsActivity.class));
-                break;
+                if(check != 1){
+                    Toast.makeText(getActivity(),"Please select an image and wait for the detection!",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    startActivity(new Intent(getActivity(), TranslationTabsActivity.class));
+                    break;
+                }
             }
         }
 
@@ -257,6 +263,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             }
             GlobalState.fullText = fullText;
         }
+        check = 1;
     }
 
 
