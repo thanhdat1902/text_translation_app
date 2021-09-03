@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.cs426.imageetranslation.activity.chooseLanguage.ChooseLanguageActivit
 import com.cs426.imageetranslation.activity.image.GetImageTabsActivity;
 import com.cs426.imageetranslation.R;
 import com.cs426.imageetranslation.activity.login.LoginActivity;
+import com.cs426.imageetranslation.activity.translation.TranslationTabsActivity;
 import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -129,11 +131,23 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                 break;
             }
             case R.id.btnExchange:{
-                int tmp = GlobalState.selectedFrom;
-                GlobalState.selectedFrom = GlobalState.selectedTo;
-                GlobalState.selectedTo = tmp;
-                btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
-                btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
+                int check = 0;
+                for(int i = 0;i < GlobalState.invalidFrom.length; i++) {
+                    if (GlobalState.countryName[GlobalState.selectedTo].toLowerCase().equals(GlobalState.invalidFrom[i].toLowerCase())){
+                        check = 1;
+                    }
+                }
+                if(check == 0) {
+                    int tmp = GlobalState.selectedFrom;
+                    GlobalState.selectedFrom = GlobalState.selectedTo;
+                    GlobalState.selectedTo = tmp;
+                    btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+                    btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
+                }
+                else{
+                    Toast.makeText(getActivity(),"The app does not support to translate from " + GlobalState.countryName[GlobalState.selectedTo],Toast.LENGTH_LONG).show();
+                }
+
                 break;
             }
             case R.id.btnTextToSpeech: {

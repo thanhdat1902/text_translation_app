@@ -19,6 +19,11 @@ public class GlobalState {
             "Polish","Portuguese","Romanian","Russian","Slovak","Slovenian","Albanian","Swedish","Swahili",
             "Tamil","Telugu","Thai","Tagalog","Turkish","Ukrainian","Urdu","Vietnamese","Chinese"};
 
+    public static String[] invalidFrom = new String[]{"Arabic","Belarusian","Bulgarian","Bengali","Greek","Persian",
+            "Irish","Gujarati","Hebrew","Hindi","Indonesian","Icelandic","Japanese","Georgian","Kannada","Korean",
+            "Macedonian","Marathi","Malay","Russian","Tamil","Telugu","Thai","Ukrainian","Urdu","Vietnamese","Chinese"
+    };
+
     public static int[] myImageList = new int[]{R.drawable.af,R.drawable.ar,R.drawable.be,R.drawable.bg,R.drawable.bn,R.drawable.ca,R.drawable.cs,
             R.drawable.cy,R.drawable.da,R.drawable.de,R.drawable.el,R.drawable.en,R.drawable.eo,R.drawable.es,R.drawable.et,
             R.drawable.fa,R.drawable.fi,R.drawable.fr,R.drawable.ga,R.drawable.gl,R.drawable.gu,R.drawable.he,R.drawable.hi,
@@ -30,4 +35,6 @@ public class GlobalState {
     public static int selectedFrom = 11;
 
     public static int selectedTo = 57;
+
+    public static int tabScreens = 0;
 }
