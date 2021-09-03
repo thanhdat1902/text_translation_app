@@ -137,7 +137,7 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                 break;
             }
             case R.id.btnTextToSpeech: {
-
+                ConvertTextToSpeech();
                 break;
             }
         }
@@ -174,7 +174,6 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                                                         ProgressBar pBar = (ProgressBar) getView().findViewById(R.id.progressbar);
                                                         pBar.setVisibility(ProgressBar.GONE);
                                                         btnTextToSpeech.setVisibility(View.VISIBLE);
-                                                        ConvertTextToSpeech();
                                                     }
                                                 })
                                         .addOnFailureListener(
