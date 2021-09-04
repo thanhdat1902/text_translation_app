@@ -108,28 +108,29 @@ public class ChooseLanguageActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        if(type == 0) {
-            int tmp = 0;
-            for(int i = 0;i < GlobalState.invalidFrom.length; i++) {
-                if (GlobalState.countryName[v.getId()].toLowerCase().equals(GlobalState.invalidFrom[i].toLowerCase())){
-                    tmp = 1;
+        if(v.getId() == R.id.btnClose){
+            startActivity(new Intent(this, TranslationTabsActivity.class));
+        }
+        else {
+            if (type == 0) {
+                int tmp = 0;
+                for (int i = 0; i < GlobalState.invalidFrom.length; i++) {
+                    if (GlobalState.countryName[v.getId()].toLowerCase().equals(GlobalState.invalidFrom[i].toLowerCase())) {
+                        tmp = 1;
+                    }
                 }
-            }
-            if(tmp == 0) {
-                GlobalState.selectedFrom = v.getId();
+                if (tmp == 0) {
+                    GlobalState.selectedFrom = v.getId();
+                    startActivity(new Intent(this, TranslationTabsActivity.class));
+                } else {
+                    Toast.makeText(this, "The app does not support to translate from " + GlobalState.countryName[v.getId()], Toast.LENGTH_LONG).show();
+                }
+            } else if (type == 1) {
+                GlobalState.selectedTo = v.getId();
                 startActivity(new Intent(this, TranslationTabsActivity.class));
             }
-            else{
-                Toast.makeText(this,"The app does not support to translate from " + GlobalState.countryName[v.getId()],Toast.LENGTH_LONG).show();
-            }
         }
-        else if(type == 1){
-            GlobalState.selectedTo= v.getId();
-            startActivity(new Intent(this, TranslationTabsActivity.class));
-        }
-        else if(v.getId() == R.id.btnClose){
-            startActivity(new Intent(this, TranslationTabsActivity.class));
-        }
+
     }
 
 }
