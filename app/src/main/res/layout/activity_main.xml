@@ -37,8 +37,10 @@
             android:layout_below="@+id/txtLogin"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:backgroundTint="@color/black"
             android:textColor="@color/black"
-            android:textSize="@string/font_size_edittext"
+            android:textCursorDrawable="@drawable/edit_cursor"
+            android:textSize="10dp"
             android:textStyle="bold" />
 
         <TextView
@@ -66,7 +68,9 @@
             android:layout_marginRight="50dp"
             android:layout_marginBottom="50dp"
             android:textColor="@color/black"
-            android:textSize="@string/font_size_edittext"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
+            android:textSize="10dp"
             android:textStyle="bold" />
     </LinearLayout>
 

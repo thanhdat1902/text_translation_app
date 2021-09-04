@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class GetImageTabsActivity extends AppCompatActivity {
     int type;
-    boolean firstChangeTab;
+    boolean firstChangeTab = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
