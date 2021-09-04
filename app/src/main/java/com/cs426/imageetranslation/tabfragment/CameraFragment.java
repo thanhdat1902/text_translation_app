@@ -39,6 +39,8 @@ import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
+//import com.google.mlkit.nl.languageid.LanguageIdentification;
+//import com.google.mlkit.nl.languageid.LanguageIdentifier;
 
 import java.io.File;
 import java.io.IOException;
@@ -285,6 +287,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                                     btnChooseLanguage.setEnabled(true);
                                 } else {
                                     Toast.makeText(getActivity(), "Cannot identify current language" ,Toast.LENGTH_SHORT);
+                                    btnChooseLanguage.setEnabled(true);
                                 }
                             }
                         })
