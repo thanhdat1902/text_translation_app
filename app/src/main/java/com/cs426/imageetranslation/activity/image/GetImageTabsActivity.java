@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class GetImageTabsActivity extends AppCompatActivity {
     int type;
+    boolean firstChangeTab;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
@@ -32,9 +33,15 @@ public class GetImageTabsActivity extends AppCompatActivity {
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
-        if(type == 1){
-            viewPager.setCurrentItem(2);
+        if(type == 1) {
+            TabLayout.Tab tab_1 = tabLayout.getTabAt(0);
+            TabLayout.Tab tab_2 = tabLayout.getTabAt(1);
+            tab_1.getIcon().setColorFilter(getResources().getColor(R.color.unselected_tab), PorterDuff.Mode.SRC_IN);
+            tab_2.getIcon().setColorFilter(getResources().getColor(R.color.primary), PorterDuff.Mode.SRC_IN);
+            firstChangeTab = true;
+            viewPager.setCurrentItem(1);
         }
+
         viewPager.addOnPageChangeListener(new
                 TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(
@@ -47,11 +54,18 @@ public class GetImageTabsActivity extends AppCompatActivity {
 
                     @Override
                     public void onTabUnselected(TabLayout.Tab tab) {
-                        tab.getIcon().setColorFilter(getResources().getColor(R.color.background), PorterDuff.Mode.SRC_IN);
+                        tab.getIcon().setColorFilter(getResources().getColor(R.color.unselected_tab), PorterDuff.Mode.SRC_IN);
                     }
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
+                        if(type == 1 && firstChangeTab == true) {
+                            viewPager.setCurrentItem(tab.getPosition());
+                            tab.getIcon().setColorFilter(getResources().getColor(R.color.primary), PorterDuff.Mode.SRC_IN);
+                            TabLayout.Tab tab_2 = tabLayout.getTabAt(1);
+                            tab_2.getIcon().setColorFilter(getResources().getColor(R.color.unselected_tab), PorterDuff.Mode.SRC_IN);
+                            firstChangeTab = false;
+                        }
                     }
                 });
 
@@ -62,7 +76,6 @@ public class GetImageTabsActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.camera_icon));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.profile_icon));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        
     }
 
 }
