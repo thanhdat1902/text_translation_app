@@ -9,11 +9,15 @@ public class User {
     private String gender;
     private String email;
     private String name;
+    private String id;
 
     public String getPhone() {
         return phone;
     }
 
+    public void setPassword(String pw){
+        this.password = pw;
+    }
     public String getPassword() {
         return password;
     }
@@ -23,7 +27,8 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String phone, String password, String dob, String gender, String email) {
+    public User(String name, String phone, String password, String dob, String gender, String email, String id) {
+        this.id = id;
         this.phone = phone;
         this.password = password;
         this.dob = dob;
@@ -39,6 +44,7 @@ public class User {
             this.gender = u.getString("gender");
             this.email = u.getString("email");
             this.name = u.getString("name");
+            this.id = u.getString("id");
         }catch (Exception err) {
             err.printStackTrace();
         }
@@ -52,6 +58,7 @@ public class User {
             account.put("dob", dob);
             account.put("gender", gender);
             account.put("email", email);
+            account.put("id", id);
             return account;
         }catch (Exception err) {
             return new JSONObject();
@@ -72,5 +79,9 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
     }
 }
