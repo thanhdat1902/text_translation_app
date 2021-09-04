@@ -32,7 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
+            android:backgroundTint="@color/black"
             android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"/>
 
         <TextView
@@ -54,6 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"/>
 
         <TextView
@@ -75,6 +79,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:inputType="textPassword"
             android:layout_marginRight="50dp"/>
 
@@ -97,6 +103,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:inputType="textPassword"
             android:layout_marginRight="50dp"/>
 
@@ -119,6 +127,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"/>
         <TextView
             android:layout_marginTop="10dp"
@@ -139,6 +149,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:inputType="date"
             android:layout_marginRight="50dp"/>
         <TextView
@@ -158,6 +170,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="50dp"/>
     </LinearLayout>
