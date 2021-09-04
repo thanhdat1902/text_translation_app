@@ -5,6 +5,7 @@ import com.cs426.imageetranslation.R;
 public class GlobalState {
     public static String fullText;
     public static String phone;
+    public static String password;
     public static String name;
     public static String dob;
     public static String gender;
