@@ -44,11 +44,8 @@
                 android:letterSpacing="@fraction/letter_spacing"/>
 
         <Button
-<<<<<<< HEAD
             android:letterSpacing="@fraction/letter_spacing"
-=======
             android:id="@+id/btnTranslateFrom"
->>>>>>> fb88a961393b266d361780aad8ccbf3c464d9b18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
