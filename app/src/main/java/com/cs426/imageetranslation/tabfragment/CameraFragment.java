@@ -32,13 +32,15 @@ import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
-import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentification;
-import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentificationOptions;
+//import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+//import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentification;
+//import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentificationOptions;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
+import com.google.mlkit.nl.languageid.LanguageIdentification;
+import com.google.mlkit.nl.languageid.LanguageIdentifier;
 
 import java.io.File;
 import java.io.IOException;
@@ -272,8 +274,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
 
     }
     private void identifyLanguage() {
-        FirebaseLanguageIdentification languageIdentifier =
-                FirebaseNaturalLanguage.getInstance().getLanguageIdentification();
+        LanguageIdentifier languageIdentifier =
+                LanguageIdentification.getClient();
         languageIdentifier.identifyLanguage(fullText)
                 .addOnSuccessListener(
                         new OnSuccessListener<String>() {
