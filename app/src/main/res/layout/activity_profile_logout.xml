@@ -136,7 +136,7 @@
             android:layout_marginRight="20dp" />
         <Button
             android:id="@+id/btnChangePassword"
-            android:textSize="15dp"
+            android:textSize="@string/font_size_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -151,7 +151,7 @@
         <Button
             android:id="@+id/btnLogout"
             android:layout_below="@+id/btnChangePassword"
-            android:textSize="15dp"
+            android:textSize="@string/font_size_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
