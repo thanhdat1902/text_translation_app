@@ -2,20 +2,26 @@ package com.cs426.imageetranslation.tabfragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cs426.imageetranslation.activity.chooseLanguage.ChooseLanguageActivity;
 import com.cs426.imageetranslation.activity.image.GetImageTabsActivity;
 import com.cs426.imageetranslation.R;
+import com.cs426.imageetranslation.activity.login.LoginActivity;
+import com.cs426.imageetranslation.activity.translation.TranslationTabsActivity;
 import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,9 +33,14 @@ import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOption
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
+
 public class TranslationFragment extends Fragment implements View.OnClickListener {
-    Button btnTakeNewImage,btnTranslateText;
+    Button btnTakeNewImage,btnTranslateText,btnTranslateFrom,btnTranslateTo;
+    ImageButton btnExchange,btnTextToSpeech;
     TextView translateV;
+    TextToSpeech tts;
+
     private String fullText;
 
 
@@ -48,12 +59,50 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
         super.onViewCreated(view, savedInstanceState);
         btnTakeNewImage = (Button) getView().findViewById(R.id.btnTakeNewPhoto);
         btnTranslateText = (Button) getView().findViewById(R.id.btnTranslate);
+        btnTranslateFrom = (Button) getView().findViewById(R.id.btnTranslateFrom);
+        btnTranslateTo = (Button) getView().findViewById(R.id.btnTranslateTo);
+        btnExchange = (ImageButton) getView().findViewById(R.id.btnExchange);
+        btnTextToSpeech = (ImageButton) getView().findViewById(R.id.btnTextToSpeech);
         translateV = (TextView) getView().findViewById(R.id.textTranslated);
+
+        btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+        btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
+        btnTextToSpeech.setVisibility(View.INVISIBLE);
 
         fullText = GlobalState.fullText;
         btnTakeNewImage.setOnClickListener(this);
         btnTranslateText.setOnClickListener(this);
+        btnTranslateFrom.setOnClickListener(this);
+        btnTranslateTo.setOnClickListener(this);
+        btnExchange.setOnClickListener(this);
+        btnTextToSpeech.setOnClickListener(this);
 
+
+        tts=new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+
+            @Override
+            public void onInit(int status) {
+                // TODO Auto-generated method stub
+                if(status == TextToSpeech.SUCCESS){
+                    int result=tts.setLanguage(new Locale(GlobalState.countryCode[GlobalState.selectedTo]));
+                    if(result==TextToSpeech.LANG_MISSING_DATA || result==TextToSpeech.LANG_NOT_SUPPORTED){
+                        Log.e("error", "This Language is not supported");
+                    }
+                }
+                else
+                    Log.e("error", "Initilization Failed!");
+            }
+        });
+    }
+    private void ConvertTextToSpeech() {
+        // TODO Auto-generated method stub
+        String text = translateV.getText().toString();
+        if(text==null||"".equals(text))
+        {
+            text = "Content not available";
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        }else
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     @Override
@@ -69,6 +118,42 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                 translateTextFromImage();
                 break;
             }
+            case R.id.btnTranslateFrom:{
+                Intent language = new Intent(getActivity(), ChooseLanguageActivity.class);
+                language.putExtra("type",0);
+                startActivity(language);
+                break;
+            }
+            case R.id.btnTranslateTo:{
+                Intent language = new Intent(getActivity(), ChooseLanguageActivity.class);
+                language.putExtra("type",1);
+                startActivity(language);
+                break;
+            }
+            case R.id.btnExchange:{
+                int check = 0;
+                for(int i = 0;i < GlobalState.invalidFrom.length; i++) {
+                    if (GlobalState.countryName[GlobalState.selectedTo].toLowerCase().equals(GlobalState.invalidFrom[i].toLowerCase())){
+                        check = 1;
+                    }
+                }
+                if(check == 0) {
+                    int tmp = GlobalState.selectedFrom;
+                    GlobalState.selectedFrom = GlobalState.selectedTo;
+                    GlobalState.selectedTo = tmp;
+                    btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+                    btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
+                }
+                else{
+                    Toast.makeText(getActivity(),"The app does not support to translate from " + GlobalState.countryName[GlobalState.selectedTo],Toast.LENGTH_LONG).show();
+                }
+
+                break;
+            }
+            case R.id.btnTextToSpeech: {
+                ConvertTextToSpeech();
+                break;
+            }
         }
     }
 
@@ -76,8 +161,8 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
         // Create an English-German translator:
         FirebaseTranslatorOptions options =
                 new FirebaseTranslatorOptions.Builder()
-                        .setSourceLanguage(FirebaseTranslateLanguage.EN)
-                        .setTargetLanguage(FirebaseTranslateLanguage.VI)
+                        .setSourceLanguage(GlobalState.selectedFrom)
+                        .setTargetLanguage(GlobalState.selectedTo)
                         .build();
         final FirebaseTranslator englishVietnamTranslator =
                 FirebaseNaturalLanguage.getInstance().getTranslator(options);
@@ -102,6 +187,7 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
                                                         translateV.setText(translatedText);
                                                         ProgressBar pBar = (ProgressBar) getView().findViewById(R.id.progressbar);
                                                         pBar.setVisibility(ProgressBar.GONE);
+                                                        btnTextToSpeech.setVisibility(View.VISIBLE);
                                                     }
                                                 })
                                         .addOnFailureListener(

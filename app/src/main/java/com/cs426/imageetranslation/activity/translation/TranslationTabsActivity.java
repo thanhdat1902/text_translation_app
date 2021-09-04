@@ -1,5 +1,6 @@
 package com.cs426.imageetranslation.activity.translation;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
@@ -11,9 +12,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.cs426.imageetranslation.R;
 import com.cs426.imageetranslation.adapter.TranslationPagerAdapter;
+import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.material.tabs.TabLayout;
 
 public class TranslationTabsActivity extends AppCompatActivity {
+    int type;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
@@ -22,13 +25,17 @@ public class TranslationTabsActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.main_tab_content);
 
-
+        Intent intent = getIntent();
+        type = intent.getIntExtra("profile",-1);
 
         prepareTabsLayout(tabLayout);
-
+        GlobalState.tabScreens = 1;
         final TranslationPagerAdapter adapter = new TranslationPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+        if(type == 1){
+            viewPager.setCurrentItem(2);
+        }
 
         viewPager.addOnPageChangeListener(new
                 TabLayout.TabLayoutOnPageChangeListener(tabLayout));

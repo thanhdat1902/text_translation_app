@@ -44,7 +44,11 @@
                 android:letterSpacing="@fraction/letter_spacing"/>
 
         <Button
+<<<<<<< HEAD
             android:letterSpacing="@fraction/letter_spacing"
+=======
+            android:id="@+id/btnTranslateFrom"
+>>>>>>> fb88a961393b266d361780aad8ccbf3c464d9b18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -63,7 +67,7 @@
             tools:ignore="RtlCompat"/>
 
             <ImageButton
-                android:id="@+id/btnNextScreen"
+                android:id="@+id/btnExchange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_round_2"
@@ -77,6 +81,7 @@
 
         <Button
             android:letterSpacing="@fraction/letter_spacing"
+            android:id="@+id/btnTranslateTo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -161,6 +166,7 @@
                 android:gravity="right">
 
                 <ImageButton
+                    android:id="@+id/btnTextToSpeech"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
