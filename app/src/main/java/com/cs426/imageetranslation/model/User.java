@@ -1,4 +1,4 @@
-package com.cs426.imageetranslation.activity.login;
+package com.cs426.imageetranslation.model;
 
 import org.json.JSONObject;
 
@@ -18,17 +18,18 @@ public class User {
         return password;
     }
 
-
     public User(String phone, String password) {
         this.phone = phone;
         this.password = password;
     }
-    public User(String phone, String password, String dob, String gender, String email) {
+
+    public User(String name, String phone, String password, String dob, String gender, String email) {
         this.phone = phone;
         this.password = password;
         this.dob = dob;
         this.gender = gender;
         this.email = email;
+        this.name = name;
     }
     public User (JSONObject u) {
         try {

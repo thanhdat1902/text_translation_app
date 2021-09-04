@@ -16,10 +16,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.cs426.imageetranslation.R;
-import com.cs426.imageetranslation.activity.image.GetImageTabsActivity;
-import com.cs426.imageetranslation.activity.login.User;
-import com.cs426.imageetranslation.activity.slider.SliderActivity;
-import com.cs426.imageetranslation.activity.translation.TranslationTabsActivity;
 import com.cs426.imageetranslation.helper.GlobalState;
 
 import org.json.JSONException;
@@ -63,7 +59,7 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
         String currentPassword = ((EditText)findViewById(R.id.txtFieldCurrentPassword)).getText().toString();
 
 
-        if (currentPassword.equals(GlobalState.password)) {
+        if (currentPassword.equals(GlobalState.user.getPassword())) {
             String newPassword = ((EditText)findViewById(R.id.txtFieldNewPassword)).getText().toString();
             String confirmPassword = ((EditText)findViewById(R.id.txtFieldConfirmPassword)).getText().toString();
 
@@ -76,7 +72,7 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
                                 if (response.length() != 0) {
                                     JSONObject result = response.getJSONObject(0);
                                     //compare to get the current user on API
-                                    if (result.getString("phone").equals(GlobalState.phone)) {
+                                    if (result.getString("phone").equals(GlobalState.user.getPhone())) {
                                         //create request to change password on API
                                         JSONObject jsonObject = new JSONObject();
                                         jsonObject.put("password", newPassword);

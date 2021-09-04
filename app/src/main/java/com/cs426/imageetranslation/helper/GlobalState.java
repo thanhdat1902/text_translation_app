@@ -1,15 +1,12 @@
 package com.cs426.imageetranslation.helper;
 
 import com.cs426.imageetranslation.R;
+import com.cs426.imageetranslation.model.User;
 
 public class GlobalState {
     public static String fullText;
-    public static String phone;
-    public static String password;
-    public static String name;
-    public static String dob;
-    public static String gender;
-    public static String email;
+    public static User user;
+
 
     public static String[] countryCode = new String[]{"af","ar","be","bg","bn","ca","cs","cy","da","de","el","en","eo","es","et",
             "fa","fi","fr","ga","gl","gu","he","hi","hr","ht","hu","id","is","it","ja","ka","kn",

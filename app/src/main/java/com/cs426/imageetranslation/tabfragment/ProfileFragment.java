@@ -38,16 +38,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btnLogOut.setOnClickListener(this);
 
         TextView name = (TextView)getView().findViewById(R.id.txtName);
-        EditText phone = (EditText)getView().findViewById(R.id.txtFieldPhone);
-        EditText gender = (EditText)getView().findViewById(R.id.txtFieldGender);
-        EditText dob = (EditText)getView().findViewById(R.id.txtFieldDateOfBirth);
-        EditText email = (EditText)getView().findViewById(R.id.txtFieldEmail);
+        TextView phone = (TextView)getView().findViewById(R.id.txtFieldPhone);
+        TextView gender = (TextView)getView().findViewById(R.id.txtFieldGender);
+        TextView dob = (TextView)getView().findViewById(R.id.txtFieldDateOfBirth);
+        TextView email = (TextView)getView().findViewById(R.id.txtFieldEmail);
 
-        name.setText(GlobalState.name);
-        phone.setText(GlobalState.phone);
-        gender.setText(GlobalState.gender);
-        email.setText(GlobalState.email);
-        dob.setText(GlobalState.dob);
+        name.setText(GlobalState.user.getName());
+        phone.setText(GlobalState.user.getPhone());
+        gender.setText(GlobalState.user.getGender());
+        email.setText(GlobalState.user.getEmail());
+        dob.setText(GlobalState.user.getDob());
     }
 
     @Override
