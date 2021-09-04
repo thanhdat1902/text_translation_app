@@ -23,10 +23,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:paddingTop="30dp"
-            android:text="USERNAME"
+            android:text="@string/username"
             android:textColor="@color/primary"
             android:textSize="10dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:letterSpacing="@fraction/letter_spacing"/>
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -36,7 +37,8 @@
             android:layout_below="@+id/txtLogin"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColor="@color/secondary"
+            android:textColor="@color/black"
+            android:textSize="10dp"
             android:textStyle="bold" />
 
         <TextView
@@ -49,10 +51,12 @@
             android:text="PASSWORD"
             android:textColor="@color/primary"
             android:textSize="10dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:letterSpacing="@fraction/letter_spacing"/>
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
             android:id="@+id/txtFieldPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +65,8 @@
             android:layout_marginTop="3dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="50dp"
-            android:textColor="@color/secondary"
+            android:textColor="@color/black"
+            android:textSize="10dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -77,5 +82,6 @@
         android:background="@drawable/button_color"
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"
-        android:textStyle="bold"></Button>
+        android:textStyle="bold"
+        android:letterSpacing="@fraction/letter_spacing"></Button>
 </RelativeLayout>

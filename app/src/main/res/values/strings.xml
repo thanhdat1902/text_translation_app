@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ImageeTranslation</string>
+    <string name="username">USERNAME</string>
+    <fraction name="letter_spacing">0.08</fraction>
 </resources>

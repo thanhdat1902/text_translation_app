@@ -8,11 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#1F78F2</color>
-    <color name="secondary">#21C2FB</color>
-    <color name="secondary_2">#1F78F2</color>
+    <color name="secondary">#289DF9</color>
+    <color name="secondary_2">#21C2FB</color>
     <color name="background">#F5F5F7</color>
     <color name="third">#FF9503</color>
     <color name="third_light">#FCA933</color>
     <color name="unselected_tab">#BDBDBD</color>
     <color name="light_black">#2A2A2A</color>
+    <color name="log_out_1">#ff4d4d</color>
+    <color name="log_out_2">#ff1a1a</color>
+    <color name="log_out_3">#ff0000</color>
 </resources>

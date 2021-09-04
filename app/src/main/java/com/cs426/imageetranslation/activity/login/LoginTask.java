@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.cs426.imageetranslation.R;
 import com.cs426.imageetranslation.activity.slider.SliderActivity;
 import com.cs426.imageetranslation.helper.GlobalState;
+import com.cs426.imageetranslation.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +49,7 @@ public class LoginTask extends AsyncTask<User, Integer, Void> {
                     if(tmp!=null) {
                         User current = new User(tmp);
                         if (password.equals(current.getPassword())) {
-                            GlobalState.phone = current.getPhone();
+                            GlobalState.user = current;
                             Intent intent = new Intent(mContext, SliderActivity.class);
                             mContext.startActivity(intent);
                         } else {
