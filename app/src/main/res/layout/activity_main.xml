@@ -84,4 +84,32 @@
         android:textAllCaps="false"
         android:textStyle="bold"
         android:letterSpacing="@fraction/letter_spacing"></Button>
+
+    <LinearLayout
+        android:paddingTop="75dp"
+        android:id="@+id/partSignup"
+        android:orientation="horizontal"
+        android:layout_below="@id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+        <TextView
+            android:id="@+id/txtSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textColor="@color/unselected_tab"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            ></TextView>
+        <TextView
+            android:paddingLeft="5dp"
+            android:id="@+id/txtClickSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/third"
+            android:textStyle="bold"
+            android:text="Sign Up"></TextView>
+    </LinearLayout>
 </RelativeLayout>
