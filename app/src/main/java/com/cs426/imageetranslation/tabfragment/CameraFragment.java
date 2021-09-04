@@ -281,11 +281,13 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                         new OnSuccessListener<String>() {
                             @Override
                             public void onSuccess(@Nullable String languageCode) {
+                                Log.d("Test","Success");
                                 if (languageCode != "und") {
                                     GlobalState.selectedFrom = GlobalState.toBCP14(languageCode);
                                     btnChooseLanguage.setEnabled(true);
                                 } else {
                                     Toast.makeText(getActivity(), "Cannot identify current language" ,Toast.LENGTH_SHORT);
+                                    btnChooseLanguage.setEnabled(true);
                                 }
                             }
                         })
@@ -293,6 +295,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                         new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                Log.d("Test","Failed");
+
                                 // Model couldn’t be loaded or other internal error.
                                 Toast.makeText(getActivity(), "Fail to download identifying models" ,Toast.LENGTH_SHORT);
                             }

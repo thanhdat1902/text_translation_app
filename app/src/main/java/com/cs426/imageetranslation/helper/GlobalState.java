@@ -52,6 +52,6 @@ public class GlobalState {
                 return i;
             }
         }
-        return -1;
+        return 11;
     }
 }
