@@ -49,6 +49,10 @@ public class LoginTask extends AsyncTask<User, Integer, Void> {
                         User current = new User(tmp);
                         if (password.equals(current.getPassword())) {
                             GlobalState.phone = current.getPhone();
+                            GlobalState.dob = current.getDob();
+                            GlobalState.gender = current.getGender();
+                            GlobalState.name = current.getName();
+                            GlobalState.email = current.getEmail();
                             Intent intent = new Intent(mContext, SliderActivity.class);
                             mContext.startActivity(intent);
                         } else {

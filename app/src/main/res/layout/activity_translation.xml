@@ -22,7 +22,8 @@
             android:textColor="@color/light_black"
             android:fontFamily="@font/lato_black"
             android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:letterSpacing="@fraction/letter_spacing"/>
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
@@ -39,11 +40,11 @@
                 android:text="Choose language:"
                 android:textColor="@color/light_black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
-
-
+                android:textStyle="bold"
+                android:letterSpacing="@fraction/letter_spacing"/>
 
         <Button
+            android:letterSpacing="@fraction/letter_spacing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -75,6 +76,7 @@
                 />
 
         <Button
+            android:letterSpacing="@fraction/letter_spacing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -103,7 +105,9 @@
             android:textStyle="bold"
             android:fontFamily="@font/lato_black"
             android:layout_gravity="center"
-            android:paddingHorizontal="16dp"/>
+            android:paddingHorizontal="16dp"
+            android:letterSpacing="@fraction/letter_spacing"
+            android:textSize="15dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,7 +115,8 @@
             android:text="Result:"
             android:textColor="@color/light_black"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:letterSpacing="@fraction/letter_spacing"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -181,6 +186,8 @@
             android:fontFamily="@font/lato_black"
             android:layout_gravity="center"
             android:paddingHorizontal="16dp"
+            android:letterSpacing="@fraction/letter_spacing"
+            android:textSize="15dp"
             />
     </LinearLayout>
 
