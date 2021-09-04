@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
     implementation 'com.google.firebase:firebase-ml-natural-language:22.0.0'
-    implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.8'
+    implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.7'
 
     implementation 'androidx.viewpager:viewpager:1.0.0'
     testImplementation 'junit:junit:4.+'

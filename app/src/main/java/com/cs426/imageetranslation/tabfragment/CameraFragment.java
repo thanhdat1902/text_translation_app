@@ -32,6 +32,9 @@ import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentification;
+import com.google.firebase.ml.naturallanguage.languageid.FirebaseLanguageIdentificationOptions;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
@@ -79,7 +82,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         btnGallery = (Button) getView().findViewById(R.id.btnGallery);
         btnChooseLanguage = (Button) getView().findViewById(R.id.btnChooseLanguage);
         detectedText = (TextView) getView().findViewById(R.id.detectedText);
-
+        btnChooseLanguage.setEnabled(false);
         btnCamera.setOnClickListener(this);
         btnGallery.setOnClickListener(this);
         btnChooseLanguage.setOnClickListener(this);
@@ -264,6 +267,34 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             GlobalState.fullText = fullText;
         }
         check = 1;
+
+        identifyLanguage();
+
+    }
+    private void identifyLanguage() {
+        FirebaseLanguageIdentification languageIdentifier =
+                FirebaseNaturalLanguage.getInstance().getLanguageIdentification();
+        languageIdentifier.identifyLanguage(fullText)
+                .addOnSuccessListener(
+                        new OnSuccessListener<String>() {
+                            @Override
+                            public void onSuccess(@Nullable String languageCode) {
+                                if (languageCode != "und") {
+                                    GlobalState.selectedFrom = GlobalState.toBCP14(languageCode);
+                                    btnChooseLanguage.setEnabled(true);
+                                } else {
+                                    Toast.makeText(getActivity(), "Cannot identify current language" ,Toast.LENGTH_SHORT);
+                                }
+                            }
+                        })
+                .addOnFailureListener(
+                        new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Model couldn’t be loaded or other internal error.
+                                Toast.makeText(getActivity(), "Fail to download identifying models" ,Toast.LENGTH_SHORT);
+                            }
+                        });
     }
 
 

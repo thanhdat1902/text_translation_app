@@ -46,4 +46,12 @@ public class GlobalState {
         }
         return true;
     }
+    public static int toBCP14(String code) {
+        for(int i =0; i<countryCode.length; i++) {
+            if(code.equals(countryCode[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
