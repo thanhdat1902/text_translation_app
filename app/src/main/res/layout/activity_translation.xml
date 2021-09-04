@@ -60,6 +60,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textAlignment="viewStart"
+            android:textStyle="bold"
             android:textAllCaps="false"
             tools:ignore="RtlCompat"/>
 
@@ -105,7 +106,6 @@
             android:layout_margin="8dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:fontFamily="@font/lato_black"
             android:layout_gravity="center"
             android:paddingHorizontal="16dp"
             android:letterSpacing="@fraction/letter_spacing"
@@ -186,7 +186,6 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"
-            android:fontFamily="@font/lato_black"
             android:layout_gravity="center"
             android:paddingHorizontal="16dp"
             android:letterSpacing="@fraction/letter_spacing"
