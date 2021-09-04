@@ -47,7 +47,7 @@
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"></TextView>
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/txtFieldPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
             android:textStyle="bold"
             android:layout_below="@+id/txtFieldPhone"
             android:layout_marginLeft="20dp"></TextView>
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/txtFieldDateOfBirth"
             android:layout_below="@+id/txtDateOfBirth"
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
             android:textColor="@color/primary"
             android:textStyle="bold"
             android:layout_marginLeft="20dp"></TextView>
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/txtFieldGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
             android:textColor="@color/primary"
             android:textStyle="bold"
             android:layout_marginLeft="20dp"></TextView>
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/txtFieldEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

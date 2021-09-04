@@ -43,7 +43,7 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnConfirmChange:{
                 Intent intent;
                 checkAndChangePassword();
-                if(GlobalState.tabScreens == 0) {
+                /*if(GlobalState.tabScreens == 0) {
                     intent = new Intent(this, GetImageTabsActivity.class);
                     intent.putExtra("profile",1);
                     startActivity(intent);
@@ -52,7 +52,7 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
                     intent = new Intent(this, TranslationTabsActivity.class);
                     intent.putExtra("profile",1);
                     startActivity(intent);
-                }
+                }*/
                 break;
             }
 
@@ -60,11 +60,12 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void checkAndChangePassword() {
-        String currentPassword = findViewById(R.id.txtFieldCurrentPassword).toString();
+        String currentPassword = ((EditText)findViewById(R.id.txtFieldCurrentPassword)).getText().toString();
+
 
         if (currentPassword.equals(GlobalState.password)) {
-            String newPassword = findViewById(R.id.txtFieldNewPassword).toString();
-            String confirmPassword = findViewById(R.id.txtFieldConfirmPassword).toString();
+            String newPassword = ((EditText)findViewById(R.id.txtFieldNewPassword)).getText().toString();
+            String confirmPassword = ((EditText)findViewById(R.id.txtFieldConfirmPassword)).getText().toString();
 
             if (confirmPassword.equals(newPassword)) {
                 RequestQueue queue = Volley.newRequestQueue(this);
@@ -80,8 +81,9 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
                                         JSONObject jsonObject = new JSONObject();
                                         jsonObject.put("password", newPassword);
 
-                                        JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.POST, this.getResources().getString(R.string.server_url) + "/users", jsonObject, res -> {
-                                            Log.d("POST", "Success");
+                                        JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.PUT, this.getResources().getString(R.string.server_url) + "/users/:" +
+                                                result.getString("phone"), jsonObject, res -> {
+                                            Log.d("PUT", "Success");
                                         }, error -> {
                                             error.printStackTrace();
                                         });
@@ -99,13 +101,13 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
                     error.printStackTrace();
                 });
                 queue.add(request);
-                Toast.makeText(this, "Change password success!", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Change password success!", Toast.LENGTH_SHORT).show();
             }
             else {
-                Toast.makeText(this, "New password and confirm password are different!", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "New password and confirm password are different!", Toast.LENGTH_SHORT).show();
             }
         }else {
-            Toast.makeText(this, "Wrong current password!", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Wrong current password!", Toast.LENGTH_SHORT).show();
         }
     }
 }
