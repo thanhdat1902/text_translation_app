@@ -32,9 +32,9 @@ public class ChangePwdTask extends AsyncTask<User, Integer, Void> {
     protected Void doInBackground(User... params) {
         RequestQueue queue = Volley.newRequestQueue(mContext);
         JSONObject jsonObject = params[0].UserToJSON();
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PUT, mContext.getResources().getString(R.string.server_url)+"/users/:" + params[0].getId(),jsonObject,
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PUT, mContext.getResources().getString(R.string.server_url)+"/users/" + params[0].getId(),jsonObject,
                 response -> {
-                    Log.d("Hello", "Success");
+                    Toast.makeText(mContext, "Change password successfully!", Toast.LENGTH_SHORT).show();
                 }, error -> {
             error.printStackTrace();
         });

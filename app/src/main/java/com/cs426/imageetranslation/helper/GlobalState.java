@@ -39,4 +39,11 @@ public class GlobalState {
     public static int selectedTo = 57;
 
     public static int tabScreens = 0;
+
+    public static boolean validatePwd(String pwd){
+        if(pwd.equals("")){
+            return false;
+        }
+        return true;
+    }
 }

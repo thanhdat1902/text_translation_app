@@ -62,8 +62,7 @@ public class GetImageTabsActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.camera_icon));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.profile_icon));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-
+        
     }
 
 }
