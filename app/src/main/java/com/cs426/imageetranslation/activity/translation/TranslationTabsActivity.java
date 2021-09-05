@@ -16,7 +16,8 @@ import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.material.tabs.TabLayout;
 
 public class TranslationTabsActivity extends AppCompatActivity {
-    int type;
+    int type; //check if this activity start from ChangePwdActivity
+    boolean firstChangeTab = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
@@ -33,8 +34,13 @@ public class TranslationTabsActivity extends AppCompatActivity {
         final TranslationPagerAdapter adapter = new TranslationPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
-        if(type == 1){
-            viewPager.setCurrentItem(2);
+        if(type == 1) {
+            TabLayout.Tab tab_1 = tabLayout.getTabAt(0);
+            TabLayout.Tab tab_2 = tabLayout.getTabAt(1);
+            tab_1.getIcon().setColorFilter(getResources().getColor(R.color.unselected_tab), PorterDuff.Mode.SRC_IN);
+            tab_2.getIcon().setColorFilter(getResources().getColor(R.color.primary), PorterDuff.Mode.SRC_IN);
+            firstChangeTab = true;
+            viewPager.setCurrentItem(1);
         }
 
         viewPager.addOnPageChangeListener(new
@@ -54,6 +60,13 @@ public class TranslationTabsActivity extends AppCompatActivity {
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
+                        if(type == 1 && firstChangeTab == true && tab.getPosition() != 1) {
+                            viewPager.setCurrentItem(tab.getPosition());
+                            tab.getIcon().setColorFilter(getResources().getColor(R.color.primary), PorterDuff.Mode.SRC_IN);
+                            TabLayout.Tab tab_2 = tabLayout.getTabAt(1);
+                            tab_2.getIcon().setColorFilter(getResources().getColor(R.color.unselected_tab), PorterDuff.Mode.SRC_IN);
+                            firstChangeTab = false;
+                        }
                     }
                 });
 

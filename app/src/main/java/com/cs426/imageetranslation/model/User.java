@@ -36,6 +36,15 @@ public class User {
         this.email = email;
         this.name = name;
     }
+
+    public User(String name, String phone, String password, String dob, String gender, String email) {
+        this.phone = phone;
+        this.password = password;
+        this.dob = dob;
+        this.gender = gender;
+        this.email = email;
+        this.name = name;
+    }
     public User (JSONObject u) {
         try {
             this.phone = u.getString("phone");

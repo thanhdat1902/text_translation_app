@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.slider.SliderActivity">
+    android:layout_height="wrap_content"
+    tools:context=".activity.slider.SliderActivity"
+    android:padding="10dp">
 
     <!-- viewpager to show images -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="650dp">
 
     </androidx.viewpager.widget.ViewPager>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnNextScreen"
         android:layout_width="wrap_content"
@@ -21,5 +24,18 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_done_icon"
         android:contentDescription="Next"
-        android:layout_margin="16dp" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_margin="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        />
+    <LinearLayout
+        android:id="@+id/SliderDots"
+        android:layout_below="@+id/viewPagerMain"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></LinearLayout>
+</RelativeLayout>
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

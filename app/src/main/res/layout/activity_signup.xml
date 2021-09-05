@@ -32,8 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
-            android:textStyle="bold"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"/>
 
         <TextView
@@ -54,8 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"/>
 
         <TextView
@@ -76,9 +78,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:inputType="textPassword"
-            android:textStyle="bold"
             android:layout_marginRight="50dp"/>
 
         <TextView
@@ -99,9 +102,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:inputType="textPassword"
-            android:textStyle="bold"
             android:layout_marginRight="50dp"/>
 
         <TextView
@@ -122,9 +126,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
-            android:inputType="textPassword"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"/>
         <TextView
             android:layout_marginTop="10dp"
@@ -144,9 +148,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
-            android:inputType="textPassword"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
+            android:inputType="date"
             android:layout_marginRight="50dp"/>
         <TextView
             android:layout_marginTop="10dp"
@@ -164,15 +169,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/secondary"
-            android:inputType="textPassword"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
+            android:textCursorDrawable="@drawable/edit_cursor"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="50dp"/>
     </LinearLayout>
     <Button
         android:layout_below="@+id/subLayout"
-        android:id="@+id/btnSignup"
+        android:id="@+id/signup_btnSignup"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -186,10 +191,10 @@
         android:textStyle="bold"></Button>
 
     <Button
-        android:id="@+id/btnCancel"
+        android:id="@+id/signup_btnCancel"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSignup"
+        android:layout_below="@+id/signup_btnSignup"
         android:layout_marginTop="9dp"
         android:background="@drawable/button_cancel"
         android:text="CANCEL"

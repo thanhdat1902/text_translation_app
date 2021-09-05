@@ -65,6 +65,7 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
         btnTextToSpeech = (ImageButton) getView().findViewById(R.id.btnTextToSpeech);
         translateV = (TextView) getView().findViewById(R.id.textTranslated);
 
+
         btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
         btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
         btnTextToSpeech.setVisibility(View.INVISIBLE);
