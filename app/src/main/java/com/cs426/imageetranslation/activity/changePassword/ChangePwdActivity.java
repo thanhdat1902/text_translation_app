@@ -42,23 +42,14 @@ public class ChangePwdActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        Intent intent;
+
         switch (v.getId()){
             case R.id.btnConfirmChange:{
                 checkAndChangePassword();
-                if(GlobalState.tabScreens == 0) {
-                    intent = new Intent(this, GetImageTabsActivity.class);
-                    intent.putExtra("profile",1);
-                    startActivity(intent);
-                }
-                else if(GlobalState.tabScreens == 1) {
-                    intent = new Intent(this, TranslationTabsActivity.class);
-                    intent.putExtra("profile",1);
-                    startActivity(intent);
-                }
                 break;
             }
             case R.id.btnCancel:{
+                Intent intent;
                 if(GlobalState.tabScreens == 0) {
                     intent = new Intent(this, GetImageTabsActivity.class);
                     intent.putExtra("profile",1);
