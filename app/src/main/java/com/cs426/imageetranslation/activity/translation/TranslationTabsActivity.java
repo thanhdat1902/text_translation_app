@@ -16,7 +16,7 @@ import com.cs426.imageetranslation.helper.GlobalState;
 import com.google.android.material.tabs.TabLayout;
 
 public class TranslationTabsActivity extends AppCompatActivity {
-    int type;
+    int type; //check if this activity start from ChangePwdActivity
     boolean firstChangeTab = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,7 @@ public class TranslationTabsActivity extends AppCompatActivity {
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
-                        if(type == 1 && firstChangeTab == true) {
+                        if(type == 1 && firstChangeTab == true && tab.getPosition() != 1) {
                             viewPager.setCurrentItem(tab.getPosition());
                             tab.getIcon().setColorFilter(getResources().getColor(R.color.primary), PorterDuff.Mode.SRC_IN);
                             TabLayout.Tab tab_2 = tabLayout.getTabAt(1);
