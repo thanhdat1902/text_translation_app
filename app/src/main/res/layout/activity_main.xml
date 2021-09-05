@@ -41,7 +41,6 @@
             android:textColor="@color/black"
             android:textCursorDrawable="@drawable/edit_cursor"
             android:textSize="15dp"
-            android:text="Abc"
             android:textStyle="bold" />
 
         <TextView
