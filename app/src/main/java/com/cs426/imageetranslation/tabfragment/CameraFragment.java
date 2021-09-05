@@ -286,6 +286,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                                     btnChooseLanguage.setEnabled(true);
                                 } else {
                                     Toast.makeText(getActivity(), "Cannot identify current language" ,Toast.LENGTH_SHORT);
+                                    btnChooseLanguage.setEnabled(true);
                                 }
                             }
                         })
