@@ -89,7 +89,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         btnGallery.setOnClickListener(this);
         btnChooseLanguage.setOnClickListener(this);
 
-
+        fullText = "";
 
     }
 
@@ -181,7 +181,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                 startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
             }
         }
-
     }
     private String getFileExt(Uri contentUri) {
         ContentResolver c = getActivity().getContentResolver();
@@ -203,6 +202,11 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
 
         if(requestCode == CAMERA_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK) {
+                btnCamera.setEnabled(false);
+                btnGallery.setEnabled(false);
+                fullText = "";
+                GlobalState.fullText = "";
+
                 File f = new File(currentPhotoPath);
                 selectedImage.setImageURI(Uri.fromFile(f));
                 galleryAddPic();
@@ -211,12 +215,16 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
             }
         }
 
         else if(requestCode == GALLERY_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK){
+                btnCamera.setEnabled(false);
+                btnGallery.setEnabled(false);
+                fullText = "";
+                GlobalState.fullText = "";
+
                 Uri contentUri = data.getData();
 //                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 //                String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
@@ -269,7 +277,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             GlobalState.fullText = fullText;
         }
         check = 1;
-
         identifyLanguage();
 
     }
@@ -285,9 +292,13 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                                 if (languageCode != "und") {
                                     GlobalState.selectedFrom = GlobalState.toBCP14(languageCode);
                                     btnChooseLanguage.setEnabled(true);
+                                    btnCamera.setEnabled(true);
+                                    btnGallery.setEnabled(true);
                                 } else {
                                     Toast.makeText(getActivity(), "Cannot identify current language" ,Toast.LENGTH_SHORT);
                                     btnChooseLanguage.setEnabled(true);
+                                    btnCamera.setEnabled(true);
+                                    btnGallery.setEnabled(true);
                                 }
                             }
                         })
