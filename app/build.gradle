@@ -54,7 +54,3 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.0'
 }
 apply plugin: 'com.google.gms.google-services'
-<<<<<<< HEAD
-=======
-
->>>>>>> 122b10cc4116042d5d3f0c0c1e6d56e72d6f28c6

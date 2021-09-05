@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".activity.slider.SliderActivity"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/background">
 
     <!-- viewpager to show images -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
-        android:layout_height="650dp">
+        android:layout_height="650dp"
+        android:background="@drawable/box_3">
 
     </androidx.viewpager.widget.ViewPager>
 

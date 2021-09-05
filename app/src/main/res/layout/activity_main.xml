@@ -25,7 +25,7 @@
             android:paddingTop="30dp"
             android:text="@string/username"
             android:textColor="@color/primary"
-            android:textSize="15dp"
+            android:textSize="10dp"
             android:textStyle="bold"
             android:letterSpacing="@fraction/letter_spacing"/>
 
@@ -41,6 +41,7 @@
             android:textColor="@color/black"
             android:textCursorDrawable="@drawable/edit_cursor"
             android:textSize="15dp"
+            android:text="Abc"
             android:textStyle="bold" />
 
         <TextView
@@ -52,7 +53,7 @@
             android:paddingTop="5dp"
             android:text="PASSWORD"
             android:textColor="@color/primary"
-            android:textSize="15dp"
+            android:textSize="10dp"
             android:textStyle="bold"
             android:letterSpacing="@fraction/letter_spacing"/>
 
