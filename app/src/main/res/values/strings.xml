@@ -2,4 +2,7 @@
     <string name="app_name">ImageeTranslation</string>
     <string name="username">USERNAME</string>
     <fraction name="letter_spacing">0.08</fraction>
+    <string name="font_size_textview">12dp</string>
+    <string name="font_size_edittext">10dp</string>
+    <string name="font_size_button">15dp</string>
 </resources>

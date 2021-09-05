@@ -25,7 +25,7 @@
             android:paddingTop="30dp"
             android:text="@string/username"
             android:textColor="@color/primary"
-            android:textSize="10dp"
+            android:textSize="@string/font_size_textview"
             android:textStyle="bold"
             android:letterSpacing="@fraction/letter_spacing"/>
 
@@ -52,7 +52,7 @@
             android:paddingTop="5dp"
             android:text="PASSWORD"
             android:textColor="@color/primary"
-            android:textSize="10dp"
+            android:textSize="@string/font_size_textview"
             android:textStyle="bold"
             android:letterSpacing="@fraction/letter_spacing"/>
 
@@ -76,7 +76,7 @@
 
     <Button
         android:layout_marginTop="-25dp"
-        android:textSize="15dp"
+        android:textSize="@string/font_size_button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnLogin"
@@ -105,7 +105,7 @@
             android:text="Don't have an account?"
             android:textColor="@color/unselected_tab"
             android:textStyle="bold"
-            android:textSize="15dp"
+            android:textSize="@string/font_size_textview"
             ></TextView>
         <TextView
             android:paddingLeft="5dp"
@@ -113,6 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/third"
+            android:textSize="@string/font_size_textview"
             android:textStyle="bold"
             android:text="Sign Up"></TextView>
     </LinearLayout>
