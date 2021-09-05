@@ -28,7 +28,7 @@ public class GlobalState {
 
     public static int[] myImageList = new int[]{R.drawable.af,R.drawable.ar,R.drawable.be,R.drawable.bg,R.drawable.bn,R.drawable.ca,R.drawable.cs,
             R.drawable.cy,R.drawable.da,R.drawable.de,R.drawable.el,R.drawable.en,R.drawable.eo,R.drawable.es,R.drawable.et,
-            R.drawable.fa,R.drawable.fi,R.drawable.fr,R.drawable.ga,R.drawable.gl,R.drawable.gu,R.drawable.he,R.drawable.hi,
+            R.drawable.fa,R.drawable.fi,R.drawable.fr,R.drawable.ga,R.drawable.es,R.drawable.gu,R.drawable.he,R.drawable.hi,
             R.drawable.hr,R.drawable.ht,R.drawable.hu,R.drawable.id,R.drawable.is,R.drawable.it,R.drawable.ja,R.drawable.ka,R.drawable.kn,
             R.drawable.ko,R.drawable.lt,R.drawable.lv,R.drawable.mk,R.drawable.mr,R.drawable.ms,R.drawable.mt,R.drawable.nl,R.drawable.no,
             R.drawable.pl,R.drawable.pt,R.drawable.ro,R.drawable.ru,R.drawable.sk,R.drawable.sl,R.drawable.sq,R.drawable.sv,R.drawable.sw,
@@ -40,18 +40,24 @@ public class GlobalState {
 
     public static int tabScreens = 0;
 
+
+
     public static boolean validatePwd(String pwd){
         if(pwd.equals("")){
             return false;
         }
         return true;
     }
+
+    public static int isDetected = -1;
     public static int toBCP14(String code) {
         for(int i =0; i<countryCode.length; i++) {
             if(code.equals(countryCode[i])) {
+                isDetected = 1;
                 return i;
             }
         }
+        isDetected = 0;
         return 11;
     }
 }

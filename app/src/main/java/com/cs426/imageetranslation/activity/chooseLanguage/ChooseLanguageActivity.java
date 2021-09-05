@@ -112,6 +112,7 @@ public class ChooseLanguageActivity extends AppCompatActivity implements View.On
             startActivity(new Intent(this, TranslationTabsActivity.class));
         }
         else {
+
             if (type == 0) {
                 int tmp = 0;
                 for (int i = 0; i < GlobalState.invalidFrom.length; i++) {
@@ -120,12 +121,14 @@ public class ChooseLanguageActivity extends AppCompatActivity implements View.On
                     }
                 }
                 if (tmp == 0) {
+                    GlobalState.isDetected = -1;
                     GlobalState.selectedFrom = v.getId();
                     startActivity(new Intent(this, TranslationTabsActivity.class));
                 } else {
                     Toast.makeText(this, "The app does not support to translate from " + GlobalState.countryName[v.getId()], Toast.LENGTH_LONG).show();
                 }
             } else if (type == 1) {
+
                 GlobalState.selectedTo = v.getId();
                 startActivity(new Intent(this, TranslationTabsActivity.class));
             }

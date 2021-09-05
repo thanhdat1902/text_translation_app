@@ -66,7 +66,15 @@ public class TranslationFragment extends Fragment implements View.OnClickListene
         translateV = (TextView) getView().findViewById(R.id.textTranslated);
 
 
-        btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+        if(GlobalState.isDetected == 1 ) {
+            btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom] + " (detected)");
+        }
+        else if(GlobalState.isDetected == 0){
+            btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom] + " (default)");
+        }
+        else{
+            btnTranslateFrom.setText(GlobalState.countryName[GlobalState.selectedFrom]);
+        }
         btnTranslateTo.setText(GlobalState.countryName[GlobalState.selectedTo]);
         btnTextToSpeech.setVisibility(View.INVISIBLE);
 

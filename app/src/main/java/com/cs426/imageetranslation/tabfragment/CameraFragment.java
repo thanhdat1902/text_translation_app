@@ -60,6 +60,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
+    public int isDetected = -1;
     public CameraFragment(){
 
     }
@@ -110,7 +111,9 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(),"Please select an image and wait for the detection!",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    startActivity(new Intent(getActivity(), TranslationTabsActivity.class));
+                    Intent intent = new Intent(getActivity(), TranslationTabsActivity.class);
+                    intent.putExtra("isDetected",isDetected);
+                    startActivity(intent);
                     break;
                 }
             }
@@ -294,6 +297,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                                     btnChooseLanguage.setEnabled(true);
                                     btnCamera.setEnabled(true);
                                     btnGallery.setEnabled(true);
+
                                 } else {
                                     Toast.makeText(getActivity(), "Cannot identify current language" ,Toast.LENGTH_SHORT);
                                     btnChooseLanguage.setEnabled(true);
@@ -310,6 +314,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
 
                                 // Model couldn’t be loaded or other internal error.
                                 Toast.makeText(getActivity(), "Fail to download identifying models" ,Toast.LENGTH_SHORT);
+                                isDetected = 0;
                             }
                         });
     }
