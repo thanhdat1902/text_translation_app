@@ -15,7 +15,7 @@
             android:layout_margin="8dp">
             <Button
                 android:id="@+id/btnCamera"
-                android:textSize="@string/font_size_button"
+                android:textSize="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Take a photo"
@@ -28,7 +28,7 @@
 
             <Button
                 android:id="@+id/btnGallery"
-                android:textSize="@string/font_size_button"
+                android:textSize="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Choose photo from gallery"
@@ -79,7 +79,7 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             android:paddingHorizontal="16dp"
-            android:textSize="@string/font_size_button"
+            android:textSize="15dp"
             android:letterSpacing="@fraction/letter_spacing"/>
     </LinearLayout>
 </RelativeLayout>
