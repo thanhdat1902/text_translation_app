@@ -33,6 +33,7 @@
 2. **Describe logic:**
 
 **Screen 1+2:** Call request to mock API via Volley library to sign in to the application. This app also allows new users who don’t have an account to create a new one to use. 
+
 ![ref1]![ref2]
 
 **Screen 3:** Create sliders to guide users step by step to understand how to use our application.
@@ -44,9 +45,11 @@ There are **2 tabs** of this application which are the **main app flow (Screen 4
 **Screen 4.1:** 
 
 Choose a method to take the photo to determine the text to translate and view your own image in this tab (image can be available or take the new one). 
+
 ![ref3]
 
-**Screen 4.2, 4.3:** Recognizing the language from the text of users’ images and let them choose the language they want to translate that text into. Users can also listen to the translated text by clicking on the volume symbol at the bottom right corner of the screen.![](Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.007.jpeg)![](Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.008.jpeg)
+**Screen 4.2, 4.3:** Recognizing the language from the text of users’ images and let them choose the language they want to translate that text into. Users can also listen to the translated text by clicking on the volume symbol at the bottom right corner of the screen.
+
 ![ref5]![ref6]
 
 
@@ -54,13 +57,16 @@ Choose a method to take the photo to determine the text to translate and view yo
 ***Profile flow:***
 
 **Screen 5.1:** This screen shows the user’s profile including personal information as registering and some functions to change their info.
+
 ![ref4]
 
 **Screen 5.2:** Support changing users’ passwords
+
 ![ref8]
 
 
 **Demo:** This is an example of recognizing the text from an image. 
+
 ![ref9]![ref10]
 
 [ref1]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.003.jpeg
@@ -69,7 +75,6 @@ Choose a method to take the photo to determine the text to translate and view yo
 [ref4]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.009.jpeg
 [ref5]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.007.jpeg
 [ref6]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.008.jpeg
-
 [ref7]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.008.jpeg
 [ref8]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.010.jpeg
 [ref9]: ./assets/Aspose.Words.9de52055-7bf6-4e7d-815e-6661bf7a1a53.011.jpeg
